@@ -6,9 +6,10 @@ from typing import DefaultDict
 from typing import Dict
 from typing import List
 
+
 class Day7():
-    
-    def get_children_bags(self, file : List[str]) -> DefaultDict[str, List[str]]:
+
+    def get_children_bags(self, file: List[str]) -> DefaultDict[str, List[str]]:
         """
         Returns DefaultDict with children mapped to parents
         """
@@ -30,14 +31,13 @@ class Day7():
 
         return children
 
-
-    def get_parents_bags(self, file : List[str]) -> DefaultDict[str, List[str]]:
+    def get_parents_bags(self, file: List[str]) -> DefaultDict[str, List[str]]:
         """
         Returns DefaultDict with parents mapped to children
         """
         parents_bags = []
 
-        for line in file :
+        for line in file:
             parents_bags.append(re.split(' contain |, ', line))
 
         # create default dict
@@ -45,7 +45,8 @@ class Day7():
         for bags in parents_bags:
             for i in range(len(bags) - 1):
                 parent = re.sub(r"(bag.?)", "", bags[0])
-                # Only match allowed children, remove text like "no other bags" and filter out number
+                # Only match allowed children, remove text like "no other bags" and filter
+                # out number
                 child_regex = re.compile(r"^(\d+) (\w+) (\w+) (\w+)")
                 child_match = child_regex.match(bags[i + 1])
 
@@ -56,7 +57,6 @@ class Day7():
                     parents[parent.strip()].append((int(num_match[0]), child.strip()))
 
         return parents
-   
 
     def depth_first_search(self, graph, node, visited):
         """
@@ -68,7 +68,6 @@ class Day7():
             if node in graph:
                 for child in graph[node]:
                     self.depth_first_search(graph, child, visited)
-
 
     def part2_depth_first_search(self, graph, node: str, visited):
         """
@@ -83,21 +82,18 @@ class Day7():
                     n += multiplier * self.part2_depth_first_search(graph, child, visited)
         return n
 
-                
     def solution_part1(self, file):
         """Solutin part 1 Using Depth First Search"""
         visited = set()
         self.depth_first_search(self.get_children_bags(file), 'shiny gold', visited)
         return visited - {'shiny gold'}
 
-
     def solution_part2(self, file):
         """Solution part 2 using DFS"""
         visited = set()
         out = self.part2_depth_first_search(self.get_parents_bags(file), 'shiny gold', visited)
-        return out - 1 # 'shiny gold' should not be counted...
+        return out - 1  # 'shiny gold' should not be counted...
 
-    
     @staticmethod
     def read_input_file(filename):
         file = []
@@ -105,7 +101,6 @@ class Day7():
             for line in my_file:
                 file.append(line.rstrip())
         return file
-
 
 
 # Test input from Day7

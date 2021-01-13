@@ -5,6 +5,7 @@ with open('day5_input.txt') as my_file:
     for line in my_file:
         file.append(line.rstrip())
 
+
 def get_row(str):
     start = 0
     stop = 127
@@ -33,6 +34,7 @@ def get_column(str):
             start = start + math.ceil(length / 2)
             stop = stop
     return start
+
 
 id_max = 0
 ids = []
