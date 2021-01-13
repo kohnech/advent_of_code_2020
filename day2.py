@@ -6,6 +6,7 @@ with open('day2_input.txt') as my_file:
     for line in my_file:
         file.append(line.rstrip())
 
+
 def check_in_interval(password, letter, minimum, maximum):
     count = password.count(letter)
     if count >= minimum and count <= maximum:
@@ -13,12 +14,15 @@ def check_in_interval(password, letter, minimum, maximum):
     return False
 
 # part2
+
+
 def check_if_position(password, letter, pos1, pos2):
     if password[pos1 - 1] == letter and password[pos2 - 1] != letter:
         return True
     elif password[pos1 - 1] != letter and password[pos2 - 1] == letter:
         return True
     return False
+
 
 def split_line(line):
     arr = line.split(':')
@@ -30,6 +34,7 @@ def split_line(line):
     max_ = int(arr3[1])
     return (password, letter, min_, max_)
 
+
 valid_passwords = 0
 
 for line in file:
@@ -39,4 +44,3 @@ for line in file:
         valid_passwords = valid_passwords + 1
 
 print("valid passpords: {}".format(valid_passwords))
-    

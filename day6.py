@@ -1,4 +1,4 @@
-from collections import defaultdict 
+from collections import defaultdict
 
 file = []
 with open('day6_input.txt') as my_file:
@@ -27,7 +27,6 @@ def get_everyone_yes(groups):
     for key in answers:
         temp = temp + int(answers[key] / len(groups))
     return temp
-
 
 
 num_yes = 0

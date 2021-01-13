@@ -1,6 +1,7 @@
 import json
 import re
 
+
 class Passport:
     def __init__(self):
         self.myvars = {}
@@ -9,19 +10,19 @@ class Passport:
         # if all (k in self.myvars for k in ("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid")):
         #     return True
         # return False
-        if not 'byr' in self.myvars:
+        if 'byr' not in self.myvars:
             return False
-        if not 'iyr' in self.myvars:
+        if 'iyr' not in self.myvars:
             return False
-        if not 'eyr' in self.myvars:
+        if 'eyr' not in self.myvars:
             return False
-        if not 'hgt' in self.myvars:
+        if 'hgt' not in self.myvars:
             return False
-        if not 'hcl' in self.myvars:
+        if 'hcl' not in self.myvars:
             return False
-        if not 'ecl' in self.myvars:
+        if 'ecl' not in self.myvars:
             return False
-        if not 'pid' in self.myvars:
+        if 'pid' not in self.myvars:
             return False
         if not self.check_byr(self.myvars['byr']):
             return False
@@ -87,12 +88,10 @@ class Passport:
     def print_passport(self):
         print(self.myvars)
 
-
     def append_data(self, data):
         name, var = data.partition(":")[::2]
         # print("(name) {} : (var) {}".format(name, var))
         self.myvars[name.strip()] = var.strip()
-
 
     def readline(self, line):
         lines = line.split()
@@ -112,7 +111,7 @@ with open('day4_input.txt') as my_file:
             p.readline(line.rstrip())
     # append last passport
     passports.append(p)
-    
+
 
 valid = 0
 for passport in passports:

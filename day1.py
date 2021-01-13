@@ -1,6 +1,6 @@
 import math
 
-#part 1
+# part 1
 array = []
 with open('day1_input.txt') as my_file:
     for line in my_file:
@@ -18,7 +18,9 @@ for ind in range(len(array)):
 print("answer part1: {}".format(numbers[0] * numbers[1]))
 numbers.clear()
 
-#part 2
+# part 2
+
+
 def part2():
     for i in range(len(array)):
         for j in range(len(array)):
@@ -30,6 +32,7 @@ def part2():
                     numbers.append(array[k])
                     return
 
+
 part2()
-            
+
 print("answer part2: {}".format(numbers[0] * numbers[1] * numbers[2]))
