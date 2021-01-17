@@ -69,6 +69,26 @@ class Day7():
                 for child in graph[node]:
                     self.depth_first_search(graph, child, visited)
 
+    def breadth_first_search(self, graph, root):
+        """
+        Search a graph breadth first in part 1 (children to parents)
+        """
+        q = [] # queue
+        visited = set() # dont search same node again...
+        q.append(root) # start search att root
+        while len(q) != 0:
+            bag = q.pop()
+            
+            if bag not in visited:
+                visited.add(bag)
+                if bag in graph:
+                    for child in graph[bag]:
+                        q.append(child)
+                    else:
+                        continue
+                        
+        return visited
+
     def part2_depth_first_search(self, graph, node: str, visited):
         """
         Search a graph depth first in part2 (parents to children)

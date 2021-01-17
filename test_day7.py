@@ -76,6 +76,20 @@ class TestDay7(unittest.TestCase):
         self.assertEqual({'shiny gold', 'muted yellow', 'dark orange',
                           'light red', 'bright white'}, visited)
 
+    def test_breadth_first_search(self):
+        """
+        Test BFS
+        """
+        expected_part1 = {
+            'bright white': ['light red', 'dark orange'],
+            'muted yellow': ['light red', 'dark orange'],
+            'shiny gold': ['bright white', 'muted yellow'],
+            'hello': ['world']
+        }
+        cut = day7.Day7()
+        out = cut.breadth_first_search(expected_part1, 'shiny gold')
+        self.assertEqual({'bright white', 'shiny gold', 'muted yellow', 'light red', 'dark orange'}, out)
+
     def test_solution_part1(self):
         """
         Test part 1
